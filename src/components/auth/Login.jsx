@@ -3,15 +3,33 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
 import Form from "react-bootstrap/Form";
+import { checkLogin } from "../../services/auth/LoginService";
+import Alert from "react-bootstrap/Alert";
+
 class Login extends Component {
   state = {
     username: "",
     password: "",
+    errorMessage: "",
   };
 
   changeUsername = (e) => {
     const username = e.target.value;
     this.setState({ username });
+  };
+
+  changePassword = (e) => {
+    const password = e.target.value;
+    this.setState({ password });
+  };
+
+  submitLogin = (e) => {
+    if (checkLogin(this.state)) {
+      this.setState({ errorMessage: "" });
+      alert("You are successfully logged in");
+    } else {
+      this.setState({ errorMessage: "Sorry invalid username or password" });
+    }
   };
 
   render() {
@@ -20,12 +38,18 @@ class Login extends Component {
         <Card style={{ width: "30rem" }}>
           <h3 className="text-uppercase">Login</h3>
           <hr />
+
+          {this.state.errorMessage.length > 0 && (
+            <Alert variant="danger">{this.state.errorMessage}</Alert>
+          )}
+
           <Card.Body>
             <Form>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Username</Form.Label>
                 <Form.Control
                   type="text"
+                  value={this.state.username}
                   placeholder="Enter username"
                   onChange={this.changeUsername}
                 />
@@ -33,12 +57,18 @@ class Login extends Component {
 
               <Form.Group controlId="formBasicPassword">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control
+                  value={this.state.password}
+                  type="password"
+                  placeholder="Password"
+                  onChange={this.changePassword}
+                />
               </Form.Group>
               <div className="text-center">
                 <Button
+                  onClick={this.submitLogin}
                   variant="primary"
-                  type="submit"
+                  type="button"
                   className="btn btn-block"
                 >
                   Login

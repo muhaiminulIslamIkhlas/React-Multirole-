@@ -7,3 +7,7 @@
   margin-top: 0.5rem;
   text-align: center;
 }
+
+hr {
+  margin-bottom: 0 !important;
+}
