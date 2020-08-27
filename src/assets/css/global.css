@@ -8,3 +8,14 @@
 .navbar a:hover {
   opacity: 0.5;
 }
+
+.list-group-item.active a {
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+/* .list-group-item.active a:hover {
+  text-transform: capitalize;
+  text-decoration: none;
+} */

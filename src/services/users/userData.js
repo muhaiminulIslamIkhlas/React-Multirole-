@@ -4,31 +4,31 @@ export default function getUserData() {
       username: "muhaimin",
       password: "123456",
       name: "Muhaimin",
+      role: "Super Admin",
     },
     {
-      username: "muhaimin",
+      username: "muhaiminn",
       password: "123456",
-      name: "Muhaimin",
+      name: "Muhaiminn",
+      role: "Admin",
     },
     {
       username: "test1",
       password: "123456",
       name: "test1",
+      role: null,
     },
     {
       username: "test2",
       password: "123456",
       name: "test2",
+      role: "Admin",
     },
     {
       username: "test3",
       password: "123456",
       name: "test3",
-    },
-    {
-      username: "test4",
-      password: "123456",
-      name: "test14",
+      role: null,
     },
   ];
 }
