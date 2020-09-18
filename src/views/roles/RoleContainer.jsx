@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import UserList from "../../components/users/UserList";
 import Sidebar from "../../components/partials/Sidebar";
+import RoleList from "../../components/roles/RoleList";
 
 const RoleContainer = () => {
   return (
@@ -11,7 +12,9 @@ const RoleContainer = () => {
           <div className="col-3">
             <Sidebar />
           </div>
-          <div className="col-9 mt-3">Roles</div>
+          <div className="col-9 mt-3">
+            <RoleList />
+          </div>
         </div>
       </div>
     </div>

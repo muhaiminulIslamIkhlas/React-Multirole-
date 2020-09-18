@@ -1,16 +1,37 @@
 import React, { useEffect, useState } from "react";
+import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/form";
+import Col from "react-bootstrap/col";
+import Row from "react-bootstrap/row";
 import getUserData from "../../services/users/userData";
+import AssignRole from "./AssignRole";
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
 
   useEffect(() => {
     setUsers(getUserData);
   }, [setUsers]);
 
+  const onSubmitAssignRole = (data) => {
+    console.log(data);
+  };
+
   return (
     <React.Fragment>
-      <h2>User List</h2>
+      <div>
+        <div className="float-left">
+          <h1>User List</h1>
+        </div>
+        <div className="float-right">
+          <button className="btn btn-success mb-2" onClick={handleShowModal}>
+            + Assign Role
+          </button>
+        </div>
+      </div>
 
       <table className="table table-bordered">
         <thead>
@@ -23,7 +44,7 @@ const UserList = () => {
           </tr>
         </thead>
         <tbody>
-          {users.length == 0 && (
+          {users.length === 0 && (
             <tr>
               <td colSpan="5" className="text-danger text-center">
                 No data found
@@ -31,7 +52,7 @@ const UserList = () => {
             </tr>
           )}
           {users.map((item, index) => (
-            <tr>
+            <tr key={index}>
               <td>{index + 1}</td>
               <td>{item.name}</td>
               <td>{item.username}</td>
@@ -44,6 +65,15 @@ const UserList = () => {
           ))}
         </tbody>
       </table>
+
+      <Modal
+        show={showModal}
+        onHide={handleCloseModal}
+        animation={true}
+        centered
+      >
+        <AssignRole submitData={onSubmitAssignRole} />
+      </Modal>
     </React.Fragment>
   );
 };

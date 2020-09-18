@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import UserList from "../../components/users/UserList";
+import PermissionList from "../../components/permissions/PermissionList";
 import Sidebar from "../../components/partials/Sidebar";
 
 const PermissionContainer = () => {
@@ -11,7 +11,9 @@ const PermissionContainer = () => {
           <div className="col-3">
             <Sidebar />
           </div>
-          <div className="col-9 mt-3">Permissions</div>
+          <div className="col-9 mt-3">
+            <PermissionList />
+          </div>
         </div>
       </div>
     </div>
